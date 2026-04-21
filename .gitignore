@@ -1,0 +1,7 @@
+/.idea
+
+/.docker/.env
+/.docker/mysql-8.4/volume/var/lib/mysql
+/.docker/nginx/volume/var/log/nginx
+
+.DS_Store
