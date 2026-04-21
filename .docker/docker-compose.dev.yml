@@ -4,3 +4,11 @@ services:
       target: dev
     volumes:
       - ./php-8.5/volume/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+  node:
+    image: node:24.15
+    ports:
+      - '5173:5173'
+    volumes:
+      - ../www:/var/www
+    working_dir: /var/www
+    command: sh -c "npm install && npm run dev -- --host"
