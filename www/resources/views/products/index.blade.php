@@ -12,7 +12,8 @@
     <div class="products">
         @foreach ($products as $product)
             <div class="product">
-                <h3>{{ $product->name }}</h3>
+                <h3>{{ $product->name }} </h3>
+                <p>Категория: {{ $product->category ? $product->category->name : 'Без категории' }}</p>
                 <p>Цена: {{ $product->price }}</p>
                 <p>Рейтинг: {{ $product->rating }}</p>
             </div>
