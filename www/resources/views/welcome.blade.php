@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Title</title>
+@section('title', 'Главная')
 
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body>
-        <main>
-            hi
-        </main>
-    </body>
-</html>
+@section('content')
+    <a href="{{ route('products.index') }}">Перейти к продуктам</a>
+@endsection

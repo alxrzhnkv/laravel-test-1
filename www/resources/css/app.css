@@ -8,4 +8,11 @@ body {
 main {
     padding: 30px 20px;
     max-width: 1024px;
+    flex-grow: 1;
+}
+
+.product {
+    border: 1px solid #ccc;
+    padding: 20px 30px;
+    margin-bottom: 30px;
 }
