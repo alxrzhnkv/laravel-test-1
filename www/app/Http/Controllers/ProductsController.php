@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Models\Category;
+use App\QueryBuilders\ProductQueryBuilder;
+use App\Http\Requests\ProductsSearchRequest;
 
 class ProductsController extends Controller
 {
-    public function index(Request $request)
+    public function index(ProductsSearchRequest $request)
     {
-        $products = Product::with('category')->paginate(20);
-        
-        return view('products.index', compact('products'));
+        $criteria = $request->validated();
+        $query = (new ProductQueryBuilder)->build($criteria);
+
+        $products = $query->paginate(20);
+        $categories = Category::all();
+
+        return view('products.index', compact('categories', 'products'));
     }
 }

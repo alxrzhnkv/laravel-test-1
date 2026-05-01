@@ -16,3 +16,20 @@ main {
     padding: 20px 30px;
     margin-bottom: 30px;
 }
+
+.filters {
+    padding: 20px 0;
+}
+
+.filter-group {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0;
+    max-width: 400px;
+}
+
+.pagination {
+    svg {
+        max-width: 10px;
+    }
+}
