@@ -8,14 +8,18 @@ use App\Http\Requests\ProductsSearchRequest;
 
 class ProductsController extends Controller
 {
-    public function index(ProductsSearchRequest $request)
+    public function index()
+    {
+        $categories = Category::all();
+        return view('products.index', compact('categories'));
+    }
+
+    public function api(ProductsSearchRequest $request)
     {
         $criteria = $request->validated();
         $query = (new ProductQueryBuilder)->build($criteria);
-
         $products = $query->paginate(20);
-        $categories = Category::all();
 
-        return view('products.index', compact('categories', 'products'));
+        return response()->json($products);
     }
 }
