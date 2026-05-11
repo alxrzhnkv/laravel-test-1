@@ -37,25 +37,13 @@ class ProductQueryBuilder
 
         $sort = $criteria['sort'] ?? null;
 
-        switch ($sort) {
-            case 'price_asc':
-                $query->orderBy('price', 'asc');
-                break;
-            case 'price_desc':
-                $query->orderBy('price', 'desc');
-                break;
-            case 'rating_asc':
-                $query->orderBy('rating', 'asc');
-                break;
-            case 'rating_desc':
-                $query->orderBy('rating', 'desc');
-                break;
-            case 'newest':
-                $query->orderBy('created_at', 'desc');
-                break;
-            default:
-                $query->orderBy('name', 'asc');
-        }
+        match ($sort) {
+            'price_asc' => $query->orderBy('price', 'asc'),
+            'price_desc' => $query->orderBy('price', 'desc'),
+            'rating_asc' => $query->orderBy('rating', 'asc'),
+            'rating_desc' => $query->orderBy('rating', 'desc'),
+            'newest', null => $query->orderBy('created_at', 'desc')
+        };
 
         return $query;
     }
